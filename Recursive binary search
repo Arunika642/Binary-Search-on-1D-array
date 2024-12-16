@@ -1,0 +1,16 @@
+public class Solution {
+
+    staticint f(int nums[],int low,int high, int target)
+    {
+        if(low>high) return -1;
+        int mid= (low+high)/2;
+        if(nums[mid]==target) return mid;
+        else if(target>nums[mid]) return f(nums,mid+1,high,target);
+        else return f(nums,low,mid-1,target);
+    }
+    public static int search(int []nums, int target) {
+        // Write your code here.
+        int low =0,high=nums.length-1;
+        return f(nums,low,high,target);
+    }
+}
