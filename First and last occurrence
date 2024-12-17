@@ -1,0 +1,49 @@
+import java.util.*;
+public class Solution {
+
+    static int lowerbound(ArrayList<Integer> arr, int n, int k)
+    {
+        int low=0,high=n-1;
+        int first=-1;
+        while(low<=high)
+        {
+            int mid=(low+high)/2;
+            if(arr.get(mid)>=k)
+            {
+                first = mid;
+                high=mid-1;
+            }
+            else
+            {
+                low=mid+1;
+            }
+        }
+        return first;
+    }
+    static int upperbound(ArrayList<Integer> arr, int n, int k)
+    {
+        int low=0,high=n-1;
+        int last=n;
+        while(low<=high)
+        {
+            int mid=(low+high)/2;
+            if(arr.get(mid)>k)
+            {
+                last = mid;
+                high=mid-1;
+            }
+            else
+            {
+                low=mid+1;
+            }
+        }
+        return last;
+    }
+    public static int[] firstAndLastPosition(ArrayList<Integer> arr, int n, int k) {
+        // Write your code here.
+        int lb=lowerbound(arr,n,k);
+    
+        if(lb==n || arr.get(lb)!=k) return new int[]{-1,-1};
+        return new int[]{lb, upperbound(arr,n,k)-1};
+    }
+};
