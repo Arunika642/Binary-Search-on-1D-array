@@ -49,6 +49,10 @@ public class Solution {
 };
 
 
+
+
+
+
 using binary search
 import java.util.*;
 public class Solution {
@@ -100,7 +104,10 @@ public class Solution {
         return last;
     }
     public static int[] firstAndLastPosition(ArrayList<Integer> arr, int n, int k) {
-        // Write your code here.   
-        return new int[]{firstOccurrence(arr,n,k), lastOccurence(arr,n,k)};
+        // Write your code here.  
+        int first = firstOccurrence(arr,n,k);
+        if(first==-1) return new int[]{-1,-1}; 
+        return new int[]{first, lastOccurence(arr,n,k)};
     }
 };
+
