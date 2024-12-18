@@ -2,6 +2,8 @@ public class Solution {
     public static int findMin(int []arr) {
         // Write your code here.
         int low=0,high=arr.length-1;
+
+        if(arr[low]<=arr[high]) return arr[low];
         int ans=Integer.MAX_VALUE;
         while(low<=high)
         {
