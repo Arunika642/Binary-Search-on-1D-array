@@ -1,3 +1,4 @@
+
 public class Solution {
     static int min(int a,int b)
     {
