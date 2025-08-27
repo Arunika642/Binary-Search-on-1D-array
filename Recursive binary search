@@ -1,16 +1,41 @@
-public class Solution {
+package Devang;
 
-    staticint f(int nums[],int low,int high, int target)
+class RecursiveBS {
+
+    static int findEl(int x, int[] arr, int low, int high)
     {
-        if(low>high) return -1;
-        int mid= (low+high)/2;
-        if(nums[mid]==target) return mid;
-        else if(target>nums[mid]) return f(nums,mid+1,high,target);
-        else return f(nums,low,mid-1,target);
+        if(low > high)
+        {
+            return -1;
+        }
+
+        int mid = low + (high-low)/2;
+        if(arr[mid]==x)
+        {
+            return mid;
+        }
+        else if(arr[mid]>x)
+        {
+            return findEl(x,arr,low,mid-1);
+        }
+        else
+        {
+            return findEl(x,arr,mid+1,high);
+        }
     }
-    public static int search(int []nums, int target) {
-        // Write your code here.
-        int low =0,high=nums.length-1;
-        return f(nums,low,high,target);
+    public static void main(String[] args)
+    {
+        int[] arr = {2, 3, 4, 5, 6, 7, 8, 9};
+        int x = 3;
+        int low=0, high = arr.length-1;
+        int result = findEl(x,arr,low,high);
+        if(result!=-1)
+        {
+            System.out.println("The element is at index " + result);
+        }
+        else
+        {
+            System.out.println("Element not found");
+        }
     }
 }
